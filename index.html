@@ -3,10 +3,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>OCULUS FLEET | GTEI Tugboat Fleet Management</title>
-    <meta
-      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-      name="viewport"
-    />
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <link rel="icon" href="assets/img/examples/logo-oculus.png" type="image/x-icon" />
 
     <link
@@ -18,243 +15,92 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <!-- Boxicons CDN -->
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
     <!-- CSS Files -->
-    <link
-      id="pagestyle"
-      href="../assets/css/argon-dashboard.css?v=2.1.0"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      crossorigin=""
-    />
-    
-    <!-- ====cek==== -->
-   
-
-    <style>
-      #map {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: 100vw;
-        z-index: -1;
-      }
-
-      /* Modal styles */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 9999;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8);
-        justify-content: center;
-        align-items: center;
-      }
-
-      .modal-content {
-        position: relative;
-        width: 90%;
-        max-width: 800px;
-      }
-
-      .modal video {
-        width: 100%;
-        height: auto;
-        border-radius: 4px;
-      }
-
-      .close-btn {
-        position: absolute;
-        top: -16px;
-        right: -16px;
-        background: red;
-        color: white;
-        font-size: 20px;
-        border: none;
-        border-radius: 50%;
-        width: 32px;
-        height: 32px;
-        cursor: pointer;
-      }
-
-      
-
-
-      
-
-    </style>
+    <link id="pagestyle" href="../assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
   </head>
 
   <body class="g-sidenav-show bg-gray-100">
-    <!-- Map Background -->
-    <div id="map"></div>
+    <nav class="sidebar close">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <img src="../assets/img/logo-oculus.png" alt="logo" />
+          </span>
+        </div>
+        <i class="bx bx-chevron-right toggle"></i>
+      </header>
 
-    <aside
-      class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4"
-      id="sidenav-main"
-      style="background-color: #22283b"
-    >
-      <div class="sidenav-header mt-4">
-        
-        <a class="navbar-brand m-0" href="" target="_blank">
-          <div class="d-flex justify-content-center">
-            <img
-              src="assets/img/examples/logo-oculus.png"
-              class="navbar-brand-img"
-              alt="main_logo"
-              style="
-                width: 100%;
-                height: auto;
-                max-height: 250px;
-                object-fit: contain;
-              "
-            />
-          </div>
-          <i class='bx bx-chevron-right toggle-sidenav' style="color: white;"></i> 
-          
-        </a>
-      </div>
-      <hr class="horizontal dark mt-0" />
-      <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
-        <ul class="navbar-nav">
-          <li class="nav-item" >
-            <a class="nav-link active" href="../pages/dashboard.html">
-              <div
-                class="icon icon-shape icon-sm border-radius-md "
-              >
-                <i
-                  class="fas fa-th-large active opacity-10"
-                  style="color: #22283b"
-                ></i>
-              </div>
-              <span class="nav-link-text ms-1" 
-                >Dashboard</span
-              >
+      <div class="menu-bar">
+        <div class="menu"></div>
+        <ul class="menu-links">
+          <li class="nav-link <?= $current_page == 'index.php' ? 'active' : '' ?>">
+            <a href="../index.php">
+              <i class="fa-solid fa-house icon"></i>
+              <span class="text nav-text">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/tripsummary.html">
-              <div
-                class="icon icon-shape icon-sm border-radius-md"
-              >
-                <i
-                  class="fas fa-window-maximize opacity-10"
-                ></i>
-              </div>
-              <span class="nav-link-text ms-1" 
-                >Trip Summary</span
-              >
+          <li class="nav-link <?= $current_page == 'tripsummary.php' ? 'active' : '' ?>">
+            <a href="pages/tripsummary.php">
+              <i class="fas fa-window-maximize icon"></i>
+              <span class="text nav-text">Trip Summary</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/configuration.html">
-              <div
-                class="icon icon-shape icon-sm border-radius-md"
-              >
-                <i
-                  class="fas fa-sliders-h opacity-10"
-                ></i>
-              </div>
-              <span class="nav-link-text ms-1" 
-                >Configuration</span
-              >
+          <li class="nav-link <?= $current_page == 'configuration.php' ? 'active' : '' ?>">
+            <a href="configuration.php">
+              <i class="fas fa-sliders-h icon"></i>
+              <span class="text nav-text">Configuration</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/schedule.html">
-              <div
-                class="icon icon-shape icon-sm border-radius-md"
-              >
-                <i
-                  class="fas fa-calendar-days opacity-10"
-                ></i>
-              </div>
-              <span class="nav-link-text ms-1" 
-                >Schedule</span
-              >
+          <li class="nav-link <?= $current_page == 'schedule.php' ? 'active' : '' ?>">
+            <a href="schedule.php">
+              <i class="fas fa-calendar-days icon"></i>
+              <span class="text nav-text">Schedule</span>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="pages/sign-up.html">
-              <div
-                class="icon icon-shape icon-sm border-radius-md"
-              >
-                <i
-                  class="fas fa-right-from-bracket opacity-10"
-                  
-                ></i>
-              </div>
-              <span class="nav-link-text ms-1" 
-                >Logout</span
-              >
+          <li class="nav-link <?= $current_page == 'sign-up.php' ? 'active' : '' ?>">
+            <a href="sign-up.php">
+              <i class="fas fa-right-from-bracket icon"></i>
+              <span class="text nav-text">Logout</span>
             </a>
           </li>
         </ul>
       </div>
-    </aside>
-
-    <main class="main-content position-relative border-radius-lg">
-      <!-- Navbar -->
-      <nav
-        class="navbar navbar-main navbar-expand-lg px-0 shadow-none border-radius-xl"
-        id="navbarBlur"
-        data-scroll="false"
-      >
-        <div class="container-fluid py-1 px-3">
-          <div
-            class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
-            id="navbar"
-          >
-            <div
-              class="ms-md-auto pe-md-3 d-flex align-items-center position-relative"
+    </nav>
+    <div id="map"></div>
+    <header class="header">
+      <div class="search-container">
+        <input type="text" placeholder="Search..." />
+        <i class="bx bx-search"></i>
+      </div>
+      <div class="profile-badge">
+        <div class="badge-content">
+          <div class="profile-icon">
+            <svg
+              class="profile-icon-svg"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="#666"
             >
-              <input
-                type="text"
-                class="form-control search-form-tugboat"
-                placeholder="Type here..."/>
-              <i
-                class="fas fa-search search-icon-tugboat"
-              ></i>
-            </div>
-
-            <div class="profile-badge">
-              <div class="badge-content">
-                <div class="profile-icon">
-                  <svg
-                  class="profile-icon-svg"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="#666"
-      
-                  >
-                    <path d="M0 0h24v24H0z" fill="none" />
-                    <path
-                      d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2c-3.3 0-9.8 1.7-9.8 5v2h19.6v-2c0-3.3-6.5-5-9.8-5z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <div class="profile-up">Jane Doe</div>
-                  <div class="profile-down">Admin</div>
-                </div>
-              </div>
-            </div>
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2c-3.3 0-9.8 1.7-9.8 5v2h19.6v-2c0-3.3-6.5-5-9.8-5z"
+              />
+            </svg>
+          </div>
+          <div>
+            <div class="profile-up">Jane Doe</div>
+            <div class="profile-down">Admin</div>
           </div>
         </div>
-      </nav>
-      <!-- End Navbar -->
+      </div>
+    </header>
 
+    <main class="main-content position-relative border-radius-lg">
       <div class="sidebar-search-tugboat">
+        <i class="bx bx-chevron-right hide-sidebar"></i>
         <div class="search-bar-tugboat">
           <div class="mb-3">
             <input
@@ -267,108 +113,86 @@
         <div class="d-flex flex-column tugboat-list">
           <!-- Fleet cards will be inserted dynamically -->
         </div>
-        <p id="record-info" class="record-tugboat">
-          <small>7 records found</small><br /><strong>of 7 Tugboats</strong>
-        </p>
+        <div id="record-info" class="record-tugboat">
+          <div><small>7 records found</small></div>
+          <div><strong>of 7 Tugboats</strong></div>
+        </div>
       </div>
 
-      <div
-        class="video-container"
-      >
+      <div class="video-container">
         <div>
-          <select
-            id="tugboat-select"
-            class="form-select-tugboat"
-          >
+          <select id="tugboat-select" class="form-select-tugboat">
             <option value="">Pilih Tugboat</option>
           </select>
         </div>
 
         <!-- Video Grid -->
-        <div
-          class="video-grid"
-        >
-          
-            <div
-              style="position: relative"
-              onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Front Cam')"
+        <div class="video-grid">
+          <div
+            style="position: relative"
+            onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Front Cam')"
+          >
+            <div class="video-label">Front Cam</div>
+            <iframe
+              src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
+              title="Front Cam"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
             >
-              <div class="video-label">
-                Front Cam
-              </div>
-              <iframe
-                src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
-                title="Front Cam"
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
-              >
-              </iframe>
-            </div>
-          
-
-          
-            <div
-              style="position: relative"
-              onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Rear Cam')"
-            >
-              <div class="video-label">
-                Rear Cam
-              </div>
-              <iframe
-                src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
-                title="Front Cam"
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
-              >
-              </iframe>
-            </div>
-         
-
-          
-            <div
-              style="position: relative"
-              onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Bridge Cam')"
-            >
-              <div class="video-label">
-                Bridge Cam
-              </div>
-              <iframe
-                src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
-                title="Front Cam"
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
-              >
-              </iframe>
-            </div>
-       
-
-
-            <div
-              style="position: relative"
-              onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Engine Room')"
-            >
-              <div class="video-label">
-                Engine Room
-              </div>
-              <iframe
-                src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
-                title="Front Cam"
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
-              >
-              </iframe>
-            </div>
+            </iframe>
           </div>
 
+          <div
+            style="position: relative"
+            onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Rear Cam')"
+          >
+            <div class="video-label">Rear Cam</div>
+            <iframe
+              src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
+              title="Front Cam"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+
+          <div
+            style="position: relative"
+            onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Bridge Cam')"
+          >
+            <div class="video-label">Bridge Cam</div>
+            <iframe
+              src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
+              title="Front Cam"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+
+          <div
+            style="position: relative"
+            onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Engine Room')"
+          >
+            <div class="video-label">Engine Room</div>
+            <iframe
+              src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
+              title="Front Cam"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+        </div>
 
         <!-- Modal Zoom -->
         <div class="modal" id="videoModal">
           <div class="modal-content">
-            <button class="close-btn" onclick="closeModal()">×</button>
+            <button class="close-btn" onclick="closeModal()"></button>
             <video id="modalVideo" src="" controls autoplay></video>
           </div>
         </div>
@@ -376,92 +200,100 @@
     </main>
 
     <script>
+      document.querySelector('.hide-sidebar').addEventListener('click', function () {
+        document.querySelector('.sidebar-search-tugboat').classList.toggle('collapsed');
+      });
+    </script>
+
+    <script>
       function zoomVideo(videoSrc, label) {
-        const modal = document.getElementById("videoModal");
-        const modalVideo = document.getElementById("modalVideo");
-        modal.style.display = "flex";
+        const modal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideo');
+        modal.style.display = 'flex';
         modalVideo.src = videoSrc;
         modalVideo.play();
       }
 
       function closeModal() {
-        const modal = document.getElementById("videoModal");
-        const modalVideo = document.getElementById("modalVideo");
+        const modal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideo');
         modalVideo.pause();
-        modalVideo.src = "";
-        modal.style.display = "none";
+        modalVideo.src = '';
+        modal.style.display = 'none';
       }
 
       // Close modal if clicked outside content
       window.onclick = function (event) {
-        const modal = document.getElementById("videoModal");
+        const modal = document.getElementById('videoModal');
         if (event.target === modal) {
           closeModal();
         }
       };
     </script>
 
-    <!--   Core JS Files   -->
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/script.js"></script>
 
     <!-- Leaflet JS -->
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      crossorigin=""
-    ></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 
     <script>
-      const apiKey = "46e83f19b2e3244bbe77f80885ca3c2b";
-      const map = L.map("map").setView([-3.1, 114.65], 9);
+      const apiKey = '46e83f19b2e3244bbe77f80885ca3c2b';
+      const map = L.map('map', {
+        center: [-3.1, 114.65],
+        zoom: 9,
+        zoomControl: false, // Supaya kita bisa pindahkan posisi zoom control
+      });
 
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; OpenStreetMap contributors",
+      // Tambahkan tile dasar
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors',
       }).addTo(map);
+
+      // Tambahkan kontrol zoom ke kanan atas
+      L.control.zoom({ position: 'topright' }).addTo(map);
 
       // Weather overlay layers
       const clouds = L.tileLayer(
         `https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=${apiKey}`,
         {
           opacity: 1.0,
-          attribution:
-            '&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>',
-        }
+          attribution: '&copy; <a href="https://openweathermap.org/">OpenWeatherMap</a>',
+        },
       );
 
       const precipitation = L.tileLayer(
         `https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=${apiKey}`,
         {
           opacity: 1.0,
-        }
+        },
       );
 
       const rain = L.tileLayer(
         `https://tile.openweathermap.org/map/rain_new/{z}/{x}/{y}.png?appid=${apiKey}`,
         {
           opacity: 1.0,
-        }
+        },
       );
 
       const snow = L.tileLayer(
         `https://tile.openweathermap.org/map/snow_new/{z}/{x}/{y}.png?appid=${apiKey}`,
         {
           opacity: 1.0,
-        }
+        },
       );
 
       const temp = L.tileLayer(
         `https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${apiKey}`,
         {
           opacity: 0.5,
-        }
+        },
       );
 
       const wind = L.tileLayer(
         `https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=${apiKey}`,
         {
           opacity: 1.0,
-        }
+        },
       );
 
       // Layer Groups
@@ -477,76 +309,76 @@
       L.control
         .layers(null, overlays, {
           collapsed: true,
-          position: "topleft", // atau "topleft", "topright", "bottomright"
+          position: 'topright', // atau "topleft", "topright", "bottomright"
         })
         .addTo(map);
 
       const tugboats = [
         {
-          id: "TUGBOAT GTEI 1",
-          image: "assets/img/examples/tugboat.png",
-          status: "Moving",
-          speed: "3.5 Knots",
-          heading: "190",
+          id: 'TUGBOAT GTEI 1',
+          image: '../assets/img/examples/tugboat.png',
+          status: 'Moving',
+          speed: '3.5 Knots',
+          heading: '190',
           coords: [-2.979758, 114.770769],
         },
         {
-          id: "TUGBOAT GTEI 2",
-          image: "assets/img/examples/tugboat.png",
-          status: "Moving",
-          speed: "3.5 Knots",
-          heading: "190",
+          id: 'TUGBOAT GTEI 2',
+          image: '../assets/img/examples/tugboat.png',
+          status: 'Moving',
+          speed: '3.5 Knots',
+          heading: '190',
           coords: [-3.28953, 114.56758],
         },
         {
-          id: "TUGBOAT GTEI 3",
-          image: "assets/img/examples/tugboat.png",
-          status: "Moving",
-          speed: "3.5 Knots",
-          heading: "190",
+          id: 'TUGBOAT GTEI 3',
+          image: '../assets/img/examples/tugboat.png',
+          status: 'Moving',
+          speed: '3.5 Knots',
+          heading: '190',
           coords: [-3.40984, 114.49331],
         },
         {
-          id: "TUGBOAT GTEI 4",
-          image: "assets/img/examples/tugboat.png",
-          status: "Moving",
-          speed: "3.5 Knots",
-          heading: "190",
+          id: 'TUGBOAT GTEI 4',
+          image: '../assets/img/examples/tugboat.png',
+          status: 'Moving',
+          speed: '3.5 Knots',
+          heading: '190',
           coords: [-3.6818, 114.4418],
         },
         {
-          id: "TUGBOAT GTEI 5",
-          image: "assets/img/examples/tugboat.png",
-          status: "Moving",
-          speed: "3.5 Knots",
-          heading: "190",
+          id: 'TUGBOAT GTEI 5',
+          image: '../assets/img/examples/tugboat.png',
+          status: 'Moving',
+          speed: '3.5 Knots',
+          heading: '190',
           coords: [-10.17422, 123.622091],
         },
         {
-          id: "TUGBOAT GTEI 6",
-          image: "assets/img/examples/tugboat.png",
-          status: "Moving",
-          speed: "3.5 Knots",
-          heading: "190",
+          id: 'TUGBOAT GTEI 6',
+          image: '../assets/img/examples/tugboat.png',
+          status: 'Moving',
+          speed: '3.5 Knots',
+          heading: '190',
           coords: [-6.2711281704409245, 107.65769652872076],
         },
         {
-          id: "TUGBOAT GTEI 7",
-          image: "assets/img/examples/tugboat.png",
-          status: "Moving",
-          speed: "3.5 Knots",
-          heading: "190",
+          id: 'TUGBOAT GTEI 7',
+          image: '../assets/img/examples/tugboat.png',
+          status: 'Moving',
+          speed: '3.5 Knots',
+          heading: '190',
           coords: [-7.789476, 110.396235],
         },
       ];
 
-      const cardContainer = document.querySelector(".d-flex.flex-column");
+      const cardContainer = document.querySelector('.d-flex.flex-column');
 
       // Buat fleet card dan simpan semua marker
       const markers = [];
 
       const customIcon = L.icon({
-        iconUrl: "assets/img/examples/tugboat.png",
+        iconUrl: '../assets/img/examples/tugboat.png',
         iconSize: [50, 35],
         iconAnchor: [20, 20],
         popupAnchor: [0, -20],
@@ -554,8 +386,8 @@
 
       function renderFleetCards() {
         tugboats.forEach((tugboat) => {
-          const card = document.createElement("div");
-          card.classList.add("fleet-item");
+          const card = document.createElement('div');
+          card.classList.add('fleet-item');
           card.innerHTML = `
       <div class="fleet-card ">
     <div class="fleet-icon">
@@ -574,9 +406,7 @@
     `;
           cardContainer.appendChild(card);
 
-          const marker = L.marker(tugboat.coords, { icon: customIcon }).addTo(
-            map
-          ).bindPopup(`
+          const marker = L.marker(tugboat.coords, { icon: customIcon }).addTo(map).bindPopup(`
       <div style="text-align:center">
         <img src="${tugboat.image}" alt="tugboat" style="width:60px;"><br>
         <strong>${tugboat.id}</strong><br>
@@ -590,9 +420,9 @@
       }
 
       function populateSelectDropdown() {
-        const select = document.getElementById("tugboat-select");
+        const select = document.getElementById('tugboat-select');
         tugboats.forEach((tugboat) => {
-          const option = document.createElement("option");
+          const option = document.createElement('option');
           option.value = tugboat.id;
           option.textContent = tugboat.id;
           select.appendChild(option);
@@ -602,26 +432,24 @@
       renderFleetCards();
       populateSelectDropdown();
 
-      const inputElement = document.querySelector(
-        'input[placeholder="by Nomor Kendaraan / ID"]'
-      );
+      const inputElement = document.querySelector('input[placeholder="by Nomor Kendaraan / ID"]');
 
-      inputElement.addEventListener("input", function () {
+      inputElement.addEventListener('input', function () {
         const searchTerm = this.value.trim().toUpperCase();
 
         // Hapus semua marker
         markers.forEach((item) => {
           map.removeLayer(item.marker);
-          const fleetCard = item.card.querySelector(".fleet-card");
-          fleetCard.classList.remove("highlight");
+          const fleetCard = item.card.querySelector('.fleet-card');
+          fleetCard.classList.remove('highlight');
         });
 
-        if (searchTerm === "") {
+        if (searchTerm === '') {
           // Jika input kosong: tampilkan semua marker & zoom out agar semua kelihatan
           const bounds = L.latLngBounds([]);
           markers.forEach((item) => {
             item.marker.addTo(map);
-            item.card.style.display = "block"; // Tampilkan semua card
+            item.card.style.display = 'block'; // Tampilkan semua card
             bounds.extend(item.marker.getLatLng());
           });
           map.fitBounds(bounds); // Zoom out agar semua marker terlihat
@@ -634,12 +462,12 @@
         markers.forEach((item) => {
           if (item.id.toUpperCase().includes(searchTerm)) {
             item.marker.addTo(map).openPopup();
-            item.card.style.display = "block";
-            const fleetCard = item.card.querySelector(".fleet-card");
-            fleetCard.classList.add("highlight");
+            item.card.style.display = 'block';
+            const fleetCard = item.card.querySelector('.fleet-card');
+            fleetCard.classList.add('highlight');
             matchCount++;
           } else {
-            item.card.style.display = "none";
+            item.card.style.display = 'none';
           }
         });
 
@@ -649,23 +477,21 @@
           map.setView([-3.1, 114.65], 9); // Default view kalau tidak ditemukan
         }
 
-        const found = tugboats.find((tugboat) =>
-          tugboat.id.includes(searchTerm)
-        );
+        const found = tugboats.find((tugboat) => tugboat.id.includes(searchTerm));
         if (found) {
           const result = markers.find((m) => m.id === found.id);
           result.marker.addTo(map).openPopup();
 
-          const fleetCard = result.card.querySelector(".fleet-card");
-          fleetCard.classList.add("highlight");
+          const fleetCard = result.card.querySelector('.fleet-card');
+          fleetCard.classList.add('highlight');
 
-          fleetCard.scrollIntoView({ behavior: "smooth", block: "center" });
+          fleetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
           map.setView(found.coords, 15);
         }
       });
 
       function updateRecordInfo(visibleCount, totalCount) {
-        const recordInfo = document.getElementById("record-info");
+        const recordInfo = document.getElementById('record-info');
         recordInfo.innerHTML = `<small>${visibleCount} records found</small><br /><strong>of ${totalCount} Tugboats</strong>`;
       }
     </script>
