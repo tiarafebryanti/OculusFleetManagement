@@ -17,6 +17,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <!-- Boxicons CDN -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
 
     <!-- CSS Files -->
     <link
@@ -29,10 +32,9 @@
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       crossorigin=""
     />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-      rel="stylesheet"
-    />
+    
+    <!-- ====cek==== -->
+   
 
     <style>
       #map {
@@ -42,13 +44,6 @@
         height: 100vh;
         width: 100vw;
         z-index: -1;
-      }
-
-      .profile-badge {
-        background-color: #ffffff; /* putih */
-        border-radius: 999px;
-        border: 2px solid #1a1a1a;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       }
 
       /* Modal styles */
@@ -91,103 +86,11 @@
         cursor: pointer;
       }
 
-      .leaflet-control-zoom {
-        margin-left: 300px !important;
-        margin-top: 30px !important;
-      }
+      
 
-      .leaflet-control-layers {
-        background: rgba(255, 255, 255, 0.8);
-        font-size: 14px;
-        border-radius: 8px;
-        margin-left: 293px !important;
-      }
 
-      .sidebar {
-        position: absolute;
-        top: 105px;
-        right: 20px;
-        width: 350px;
-        background: white;
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        z-index: 999;
-      }
+      
 
-      .fleet-card {
-        display: flex;
-        background: #e4e4e4;
-        padding: 10px 18px;
-        margin-bottom: 10px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        align-items: center;
-      }
-
-      .fleet-icon img {
-        width: 70px;
-        height: 40px;
-        margin-right: 12px;
-      }
-
-      .fleet-details {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-      }
-
-      .fleet-header {
-        display: flex;
-        justify-content: space-between;
-        font-weight: 600;
-        color: #3a3a3a;
-        margin-bottom: 5px;
-      }
-
-      .fleet-title {
-        font-size: 15px;
-        color: #000000;
-      }
-
-      .fleet-online {
-        color: green;
-        font-size: 14px;
-      }
-
-      .fleet-info-line {
-        display: flex;
-        justify-content: space-between;
-        color: #4f4f4f;
-        font-size: 16px;
-        padding: 8px 0;
-      }
-
-      .highlight {
-        background-color: #cfe8ff !important;
-      }
-
-      .search-bar {
-        margin-bottom: 15px;
-      }
-
-      .search-bar input {
-        width: 100%;
-        padding: 12px;
-        border-radius: 25px;
-        border: 2px solid #ccc;
-        font-size: 16px;
-      }
-
-      .search-bar input:focus {
-        outline: none;
-        box-shadow: none;
-        border-color: #ccc; /* Tetap warna abu-abu saat fokus */
-      }
-
-      .tugboat-list {
-        max-height: 450px; /* Sesuaikan tinggi maksimum sesuai kebutuhan */
-        overflow-y: auto;
-      }
     </style>
   </head>
 
@@ -201,11 +104,7 @@
       style="background-color: #22283b"
     >
       <div class="sidenav-header mt-4">
-        <i
-          class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
-          aria-hidden="true"
-          id="iconSidenav"
-        ></i>
+        
         <a class="navbar-brand m-0" href="" target="_blank">
           <div class="d-flex justify-content-center">
             <img
@@ -220,67 +119,66 @@
               "
             />
           </div>
+          <i class='bx bx-chevron-right toggle-sidenav' style="color: white;"></i> 
+          
         </a>
       </div>
       <hr class="horizontal dark mt-0" />
       <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
-          <li class="nav-item" style="margin-bottom: 16px">
+          <li class="nav-item" >
             <a class="nav-link active" href="../pages/dashboard.html">
               <div
-                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
+                class="icon icon-shape icon-sm border-radius-md "
               >
                 <i
                   class="fas fa-th-large active opacity-10"
-                  style="font-size: 23px; color: #22283b"
+                  style="color: #22283b"
                 ></i>
               </div>
-              <span class="nav-link-text ms-1" style="font-size: 23px"
+              <span class="nav-link-text ms-1" 
                 >Dashboard</span
               >
             </a>
           </li>
-          <li class="nav-item" style="margin-bottom: 16px">
+          <li class="nav-item">
             <a class="nav-link" href="pages/tripsummary.html">
               <div
-                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
+                class="icon icon-shape icon-sm border-radius-md"
               >
                 <i
                   class="fas fa-window-maximize opacity-10"
-                  style="font-size: 23px"
                 ></i>
               </div>
-              <span class="nav-link-text ms-1" style="font-size: 23px"
+              <span class="nav-link-text ms-1" 
                 >Trip Summary</span
               >
             </a>
           </li>
-          <li class="nav-item" style="margin-bottom: 16px">
+          <li class="nav-item">
             <a class="nav-link" href="pages/configuration.html">
               <div
-                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
+                class="icon icon-shape icon-sm border-radius-md"
               >
                 <i
                   class="fas fa-sliders-h opacity-10"
-                  style="font-size: 23px"
                 ></i>
               </div>
-              <span class="nav-link-text ms-1" style="font-size: 23px"
+              <span class="nav-link-text ms-1" 
                 >Configuration</span
               >
             </a>
           </li>
-          <li class="nav-item" style="margin-bottom: 16px">
+          <li class="nav-item">
             <a class="nav-link" href="pages/schedule.html">
               <div
-                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
+                class="icon icon-shape icon-sm border-radius-md"
               >
                 <i
                   class="fas fa-calendar-days opacity-10"
-                  style="font-size: 23px"
                 ></i>
               </div>
-              <span class="nav-link-text ms-1" style="font-size: 23px"
+              <span class="nav-link-text ms-1" 
                 >Schedule</span
               >
             </a>
@@ -289,14 +187,14 @@
           <li class="nav-item">
             <a class="nav-link" href="pages/sign-up.html">
               <div
-                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
+                class="icon icon-shape icon-sm border-radius-md"
               >
                 <i
                   class="fas fa-right-from-bracket opacity-10"
-                  style="font-size: 23px"
+                  
                 ></i>
               </div>
-              <span class="nav-link-text ms-1" style="font-size: 23px"
+              <span class="nav-link-text ms-1" 
                 >Logout</span
               >
             </a>
@@ -322,31 +220,22 @@
             >
               <input
                 type="text"
-                class="form-control text-white text-lg pe-3"
-                placeholder="Type here..."
-                style="
-                  background-color: #22283b;
-                  border-radius: 999px;
-                  border: none;
-                  padding-top: 0.875rem;
-                  padding-bottom: 0.875rem;
-                "
-              />
+                class="form-control search-form-tugboat"
+                placeholder="Type here..."/>
               <i
-                class="fas fa-search position-absolute"
-                style="right: 30px; color: white"
+                class="fas fa-search search-icon-tugboat"
               ></i>
             </div>
 
             <div class="profile-badge">
-              <div class="badge-content d-flex align-items-center px-4">
-                <div class="profile-icon me-2">
+              <div class="badge-content">
+                <div class="profile-icon">
                   <svg
+                  class="profile-icon-svg"
                     xmlns="http://www.w3.org/2000/svg"
-                    height="32"
                     viewBox="0 0 24 24"
-                    width="32"
                     fill="#666"
+      
                   >
                     <path d="M0 0h24v24H0z" fill="none" />
                     <path
@@ -354,9 +243,9 @@
                     />
                   </svg>
                 </div>
-                <div class="profile-text">
-                  <div style="font-weight: 600; color: #333">Jane Doe</div>
-                  <div style="font-size: 0.9em; color: #888">Admin</div>
+                <div>
+                  <div class="profile-up">Jane Doe</div>
+                  <div class="profile-down">Admin</div>
                 </div>
               </div>
             </div>
@@ -365,8 +254,8 @@
       </nav>
       <!-- End Navbar -->
 
-      <div class="sidebar">
-        <div class="search-bar">
+      <div class="sidebar-search-tugboat">
+        <div class="search-bar-tugboat">
           <div class="mb-3">
             <input
               type="text"
@@ -378,34 +267,18 @@
         <div class="d-flex flex-column tugboat-list">
           <!-- Fleet cards will be inserted dynamically -->
         </div>
-        <p id="record-info" class="text-start mt-2">
+        <p id="record-info" class="record-tugboat">
           <small>7 records found</small><br /><strong>of 7 Tugboats</strong>
         </p>
       </div>
 
       <div
-        style="
-          position: fixed;
-          bottom: 20px;
-          right: 20px;
-          width: calc(100% - 40px);
-          max-width: 1200px;
-          z-index: 999;
-        "
+        class="video-container"
       >
-        <div style="margin-bottom: 10px">
+        <div>
           <select
             id="tugboat-select"
-            style="
-              padding: 10px 16px;
-              border-radius: 4px;
-              border: 1px solid #ccc;
-              width: 285px;
-              font-size: 16px;
-              font-family: 'Poppins', sans-serif;
-              background: white;
-              color: #4b4b4b;
-            "
+            class="form-select-tugboat"
           >
             <option value="">Pilih Tugboat</option>
           </select>
@@ -414,144 +287,83 @@
         <!-- Video Grid -->
         <div
           class="video-grid"
-          style="display: flex; flex-wrap: wrap; gap: 16px"
         >
-          <div style="flex: 1; min-width: 220px">
+          
             <div
               style="position: relative"
               onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Front Cam')"
             >
-              <div
-                style="
-                  position: absolute;
-                  top: 8px;
-                  left: 8px;
-                  background: #22283b;
-                  color: white;
-                  padding: 4px 8px;
-                  border-radius: 4px;
-                  font-size: 14px;
-                  font-family: 'Poppins', sans-serif;
-                "
-              >
+              <div class="video-label">
                 Front Cam
               </div>
               <iframe
-                width="100%"
-                height="180"
                 src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
                 title="Front Cam"
                 frameborder="0"
                 allow="autoplay; encrypted-media"
                 allowfullscreen
-                style="border-radius: 8px"
               >
               </iframe>
             </div>
-          </div>
+          
 
-          <div style="flex: 1; min-width: 220px">
+          
             <div
               style="position: relative"
               onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Rear Cam')"
             >
-              <div
-                style="
-                  position: absolute;
-                  top: 8px;
-                  left: 8px;
-                  background: #22283b;
-                  color: white;
-                  padding: 4px 8px;
-                  border-radius: 4px;
-                  font-size: 14px;
-                  font-family: 'Poppins', sans-serif;
-                "
-              >
+              <div class="video-label">
                 Rear Cam
               </div>
               <iframe
-                width="100%"
-                height="180"
                 src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
                 title="Front Cam"
                 frameborder="0"
                 allow="autoplay; encrypted-media"
                 allowfullscreen
-                style="border-radius: 8px"
               >
               </iframe>
             </div>
-          </div>
+         
 
-          <div style="flex: 1; min-width: 220px">
+          
             <div
               style="position: relative"
               onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Bridge Cam')"
             >
-              <div
-                style="
-                  position: absolute;
-                  top: 8px;
-                  left: 8px;
-                  background: #22283b;
-                  color: white;
-                  padding: 4px 8px;
-                  border-radius: 4px;
-                  font-size: 14px;
-                  font-family: 'Poppins', sans-serif;
-                "
-              >
+              <div class="video-label">
                 Bridge Cam
               </div>
               <iframe
-                width="100%"
-                height="180"
                 src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
                 title="Front Cam"
                 frameborder="0"
                 allow="autoplay; encrypted-media"
                 allowfullscreen
-                style="border-radius: 8px"
+              >
+              </iframe>
+            </div>
+       
+
+
+            <div
+              style="position: relative"
+              onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Engine Room')"
+            >
+              <div class="video-label">
+                Engine Room
+              </div>
+              <iframe
+                src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
+                title="Front Cam"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
               >
               </iframe>
             </div>
           </div>
 
-          <div style="flex: 1; min-width: 220px">
-            <div
-              style="position: relative"
-              onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Engine Room')"
-            >
-              <div
-                style="
-                  position: absolute;
-                  top: 8px;
-                  left: 8px;
-                  background: #22283b;
-                  color: white;
-                  padding: 4px 8px;
-                  border-radius: 4px;
-                  font-size: 14px;
-                  font-family: 'Poppins', sans-serif;
-                "
-              >
-                Engine Room
-              </div>
-              <iframe
-                width="100%"
-                height="180"
-                src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
-                title="Front Cam"
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
-                style="border-radius: 8px"
-              >
-              </iframe>
-            </div>
-          </div>
-        </div>
 
         <!-- Modal Zoom -->
         <div class="modal" id="videoModal">
