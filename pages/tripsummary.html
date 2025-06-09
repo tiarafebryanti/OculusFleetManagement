@@ -1,484 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>OCULUS FLEET | GTEI Tugboat Fleet Management</title>
+    <!--     Fonts and icons     -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>
-    OCULUS FLEET | GTEI Tugboat Fleet Management
-  </title>
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- CSS Files -->
+    <link id="pagestyle" href="../assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Boxicons CDN -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  </head>
 
-  <!-- CSS Files -->
-  <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.1.0" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-  <style>
-
-     .profile-badge {
-    background-color: #ffffff; /* putih */
-    border-radius: 999px;
-    border: 2px solid #1a1a1a;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .schedule-container {
-      background-color: #fff;
-      border-radius: 8px;
-      padding: 30px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      margin-left: 20px;
-      margin-right: 20px;
-    }
-
-    .header {
-      display: flex;
-      gap: 33px;
-      justify-content: end;
-      font-weight: 600;
-      margin-bottom: 50px;
-    }
-
-    .header div {
-      text-align: center;
-      width: 80px;
-      
-    }
-
-    .tugboat-row {
-      display: flex;
-      align-items: center;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 15px;
-      margin-bottom: 15px;
-      background-color: #fff;
-    }
-
-    .tugboat-info {
-      display: flex;
-      align-items: center;
-      min-width: 180px;
-      margin-right: 16px;
-    }
-
-    .tugboat-logo {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      margin-right: 10px;
-    }
-
-    .tugboat-name {
-      min-width: 130px;
-      font-weight: 600;
-    }
-
-    .status-bar {
-      display: flex;
-      gap: 8px;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-    }
-
-    .status {
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 14px;
-      white-space: nowrap;
-      background-color: #d1d1d1;
-      
-    }
-
-    .status.active {
-      background-color: #22283B;
-      color: white;
-    }
-
-    .status.empty {
-      background-color: #f0f0f0;
-      color: #888;
-    }
-
-  </style>
-
-</head>
-
-<body style="background-color: #ECEDF5;" class="g-sidenav-show">
-  
-   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main" style="background-color: #22283B; ">
-    <div class="sidenav-header mt-4">
-      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href="" target="_blank">
-        <div class="d-flex justify-content-center">
-             <img src="../assets/img/examples/logo-oculus.png" cl?ass="navbar-brand-img" alt="main_logo" style="width: 100%; height: auto; max-height: 250px; object-fit: contain;">
+  <body>
+    <nav class="sidebar close">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <img src="../assets/img/examples/logo-oculus.png" alt="logo" />
+          </span>
         </div>
-      </a>
-    </div>
-    <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
-      <ul class="navbar-nav">
-        <li class="nav-item" style="margin-bottom: 16px;">
-          <a class="nav-link" href="../index.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fas fa-th-large active opacity-10" style="font-size: 23px; "></i>
-            </div>
-            <span class="nav-link-text ms-1" style="font-size: 23px;" >Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item" style="margin-bottom: 16px;">
-          <a class="nav-link active" href="../pages/tripsummary.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fas fa-window-maximize active  opacity-10" style="font-size: 23px;  color: #22283B;"></i>
-            </div>
-            <span class="nav-link-text ms-1 " style="font-size: 23px;">Trip Summary</span>
-          </a>
-        </li>
-        <li class="nav-item"  style="margin-bottom: 16px;">
-          <a class="nav-link" href="../pages/configuration.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fas fa-sliders-h  opacity-10" style="font-size: 23px;"></i>
-            </div>
-            <span class="nav-link-text ms-1 " style="font-size: 23px;">Configuration</span>
-          </a>
-        </li>
-        <li class="nav-item"  style="margin-bottom: 16px;">
-          <a class="nav-link" href="../pages/schedule.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fas fa-calendar-days  opacity-10" style="font-size: 23px;"></i>
-            </div>
-            <span class="nav-link-text ms-1 " style="font-size: 23px;">Schedule</span>
-          </a>
-        </li>
+        <i class="bx bx-chevron-right toggle"></i>
+      </header>
 
-        <li class="nav-item" >
-          <a class="nav-link" href="../pages/sign-up.html">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fas fa-right-from-bracket  opacity-10" style="font-size: 23px;"></i>
-            </div>
-            <span class="nav-link-text ms-1 " style="font-size: 23px;">Logout</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-   
-  </aside>
+      <div class="menu-bar">
+        <div class="menu"></div>
+        <ul class="menu-links">
+          <li class="nav-link">
+            <a href="../index.html">
+              <i class="fa-solid fa-house icon"></i>
+              <span class="text nav-text">Dashboard</span>
+            </a>
+          </li>
 
-
-  <main class="main-content position-relative border-radius-lg ">
-    <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0  shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
-      <div class="container-fluid py-1 px-3">
-
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                  
-
-        <div class="ms-md-auto pe-md-3 d-flex align-items-center position-relative">
-  <input type="text" class="form-control text-white text-lg pe-3" placeholder="Type here..." 
-         style="background-color: #22283B; border-radius: 999px; border: none; padding-top: 0.875rem; padding-bottom: 0.875rem;">
-  <i class="fas fa-search position-absolute" 
-     style="right: 30px; color: white;"></i>
-</div>
-
- <div class="profile-badge ">
-    <div class="badge-content d-flex align-items-center px-4 ">
-      <div class="profile-icon me-2">
-        <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 0 24 24" width="32" fill="#666">
-          <path d="M0 0h24v24H0z" fill="none"/>
-          <path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2c-3.3 0-9.8 1.7-9.8 5v2h19.6v-2c0-3.3-6.5-5-9.8-5z"/>
-        </svg>
-      </div>
-      <div class="profile-text">
-        <div style="font-weight: 600; color: #333;">Jane Doe</div>
-        <div style="font-size: 0.9em; color: #888;">Admin</div>
-      </div>
-    </div>
-  </div>
-
-
-        </div>
+          <li class="nav-link active">
+            <a href="../pages/tripsummary.html">
+              <i class="fas fa-window-maximize icon"></i>
+              <span class="text nav-text">Trip Summary</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a href="../pages/configuration.html">
+              <i class="fas fa-sliders-h icon"></i>
+              <span class="text nav-text">Configuration</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a href="../pages/schedule.html">
+              <i class="fas fa-calendar-days icon"></i>
+              <span class="text nav-text">Schedule</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a href="../pages/sign-up.html">
+              <i class="fas fa-right-from-bracket icon"></i>
+              <span class="text nav-text">Logout</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
-    <!-- End Navbar -->
 
-   <div class="schedule-container" style="margin-top: 25px;" >
-  <div class="header">
-    <div>Thu<br>08-Jan</div>
-    <div>Fri<br>16-May</div>
-    <div>Sat<br>17-May</div>
-    <div>Sun<br>18-May</div>
-    <div>Mon<br>19-May</div>
-    <div>Tue<br>21-May</div>
-    <div>Wed<br>22-May</div>
-    <div>Thu<br>23-May</div>
-    <div>Fri<br>24-May</div>
-    <div>Sat<br>25-May</div>
-    <div>Sun<br>26-May</div>
-    <div>Mon<br>27-May</div>
-  </div>
+    <header class="header">
+      <div class="search-container">
+        <input type="text" placeholder="Search..." />
+        <i class="bx bx-search"></i>
+      </div>
+      <div class="profile-badge">
+        <div class="badge-content">
+          <div class="profile-icon">
+            <svg
+              class="profile-icon-svg"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="#666"
+            >
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2c-3.3 0-9.8 1.7-9.8 5v2h19.6v-2c0-3.3-6.5-5-9.8-5z"
+              />
+            </svg>
+          </div>
+          <div>
+            <div class="profile-up">Jane Doe</div>
+            <div class="profile-down">Admin</div>
+          </div>
+        </div>
+      </div>
+    </header>
 
+    <main class="main-content-container" id="mainContent">
+      <div class="schedule-container">
+        <div class="header-date">
+          <div>Thu<br />08-Jan</div>
+          <div>Fri<br />16-May</div>
+          <div>Sat<br />17-May</div>
+          <div>Sun<br />18-May</div>
+          <div>Mon<br />19-May</div>
+          <div>Tue<br />21-May</div>
+          <div>Wed<br />22-May</div>
+          <div>Thu<br />23-May</div>
+          <div>Fri<br />24-May</div>
+          <div>Sat<br />25-May</div>
+          <div>Sun<br />26-May</div>
+          <div>Mon<br />27-May</div>
+        </div>
 
-   <div class="tugboat-row">
-    <div class="tugboat-info">
-      <img src="../assets/img/examples/tugboat.png" class="tugboat-logo" alt="Tugboat">
-      <div class="tugboat-name">Tugboat GTEI 1</div>
-    </div>
-    <div class="status-bar">
-      <div class="status active">Loading</div>
-      <div class="status">Moving</div>
-      <div class="status">Unloading</div>
-      <div class="status">Return</div>
-    </div>
-  </div>
+        <div class="tugboat-row-schedule">
+          <div class="tugboat-info-schedule">
+            <img
+              src="../assets/img/examples/tugboat.png"
+              class="tugboat-logo-schedule"
+              alt="Tugboat"
+            />
+            <div class="tugboat-name-schedule">Tugboat GTEI 1</div>
+          </div>
+          <div class="status-bar-schedule">
+            <div class="status-schedule active-schedule">Loading</div>
+            <div class="status-schedule">Moving</div>
+            <div class="status-schedule">Unloading</div>
+            <div class="status-schedule">Return</div>
+          </div>
+        </div>
 
-  <!-- Tugboat 2 -->
-  <div class="tugboat-row">
-    <div class="tugboat-info">
-      <img src="../assets/img/examples/tugboat.png" class="tugboat-logo" alt="Tugboat">
-      <div class="tugboat-name">Tugboat GTEI 2</div>
-    </div>
-    <div class="status-bar">
-      <div class="status active">Loading</div>
-      <div class="status">Moving</div>
-      <div class="status">Unloading</div>
-      <div class="status">Return</div>
-    </div>
-  </div>
+        <!-- Tugboat 2 -->
+        <div class="tugboat-row-schedule">
+          <div class="tugboat-info-schedule">
+            <img
+              src="../assets/img/examples/tugboat.png"
+              class="tugboat-logo-schedule"
+              alt="Tugboat"
+            />
+            <div class="tugboat-name-schedule">Tugboat GTEI 2</div>
+          </div>
+          <div class="status-bar-schedule">
+            <div class="status-schedule active-schedule">Loading</div>
+            <div class="status-schedule">Moving</div>
+            <div class="status-schedule">Unloading</div>
+            <div class="status-schedule">Return</div>
+          </div>
+        </div>
 
-  <!-- Tugboat 3 -->
-  <div class="tugboat-row">
-    <div class="tugboat-info">
-      <img src="../assets/img/examples/tugboat.png" class="tugboat-logo" alt="Tugboat">
-      <div class="tugboat-name">Tugboat GTEI 3</div>
-    </div>
-    <div class="status-bar">
-      <div class="status empty">...</div>
-      <div class="status">Unloading</div>
-      <div class="status">Return</div>
-    </div>
-  </div>
+        <!-- Tugboat 3 -->
+        <div class="tugboat-row-schedule">
+          <div class="tugboat-info-schedule">
+            <img
+              src="../assets/img/examples/tugboat.png"
+              class="tugboat-logo-schedule"
+              alt="Tugboat"
+            />
+            <div class="tugboat-name-schedule">Tugboat GTEI 3</div>
+          </div>
+          <div class="status-bar-schedule">
+            <div class="status-schedule empty-schedule">...</div>
+            <div class="status-schedule">Unloading</div>
+            <div class="status-schedule">Return</div>
+          </div>
+        </div>
 
-  <!-- Tugboat 4 -->
-  <div class="tugboat-row">
-    <div class="tugboat-info">
-      <img src="../assets/img/examples/tugboat.png" class="tugboat-logo" alt="Tugboat">
-      <div class="tugboat-name">Tugboat GTEI 4</div>
-    </div>
-    <div class="status-bar">
-      <div class="status">Unloading</div>
-      <div class="status">Return</div>
-      <div class="status active" style="background-color: #4a4a4a;">Docking</div>
-    </div>
-  </div>
-</div>
+        <!-- Tugboat 4 -->
+        <div class="tugboat-row-schedule">
+          <div class="tugboat-info-schedule">
+            <img
+              src="../assets/img/examples/tugboat.png"
+              class="tugboat-logo-schedule"
+              alt="Tugboat"
+            />
+            <div class="tugboat-name-schedule">Tugboat GTEI 4</div>
+          </div>
+          <div class="status-bar-schedule">
+            <div class="status-schedule">Unloading</div>
+            <div class="status-schedule">Return</div>
+            <div class="status-schedule active-schedule" style="background-color: #4a4a4a">
+              Docking
+            </div>
+          </div>
+        </div>
+      </div>
 
-    
- 
-
-
-    <div style="margin-bottom: 20px; margin-top: 20px; margin-left: 20px;">
-      <select style="
-        padding: 10px 16px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        width: 392px;
-        font-size: 16px;
-        font-family: 'Poppins', sans-serif;
-        background: white;
-        color: #4B4B4B;
-      ">
-        <option>Tugboat GTEI 1</option>
-        <option>Tugboat GTEI 2</option>
-        <option>Tugboat GTEI 3</option>
-      </select>
-    </div>
-
-    <div style="
-    bottom: 20px;
-    
-    width: 100%;">
+      <div style="margin-bottom: 15px; margin-top: 15px">
+        <select
+          style="
+            padding: 10px 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 392px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            background: white;
+            color: #4b4b4b;
+          "
+        >
+          <option>Tugboat GTEI 1</option>
+          <option>Tugboat GTEI 2</option>
+          <option>Tugboat GTEI 3</option>
+        </select>
+      </div>
 
       <!-- Video Grid -->
-<div style="display: flex; flex-wrap: wrap; gap: 15px; margin-left: 20px;">
-  <div>
-    <div style="position: relative;"  onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Front Cam')">
-      <div style="
-        position: absolute;
-        top: 8px;
-        left: 8px;
-        background: #22283B;
-        color: white;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 14px;
-        font-family: 'Poppins', sans-serif;
-      ">
-        Front Cam
-      </div>
-       <iframe 
-        width="390" 
-        height="250" 
-        src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1" 
-        title="Front Cam" 
-        frameborder="0" 
-        allow="autoplay; encrypted-media" 
-        allowfullscreen 
-        style="border-radius: 8px;">
-      </iframe>
-    </div>
-  </div>
-
-  <div>
-    <div style="position: relative;"  onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Rear Cam')">
-      <div style="
-        position: absolute;
-        top: 8px;
-        left: 8px;
-        background: #22283B;
-        color: white;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 14px;
-        font-family: 'Poppins', sans-serif;
-      ">
-        Rear Cam
-      </div>
-       <iframe 
-        width="390" 
-        height="250" 
-        src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1" 
-        title="Front Cam" 
-        frameborder="0" 
-        allow="autoplay; encrypted-media" 
-        allowfullscreen 
-        style="border-radius: 8px;">
-      </iframe>
-    </div>
-  </div>
-
-  <div>
-    <div style="position: relative;"  onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Bridge Cam')">
-      <div style="
-        position: absolute;
-        top: 8px;
-        left: 8px;
-        background: #22283B;
-        color: white;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 14px;
-        font-family: 'Poppins', sans-serif;
-      ">
-        Bridge Cam
-      </div>
- <iframe 
-        width="390" 
-        height="250" 
-        src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1" 
-        title="Front Cam" 
-        frameborder="0" 
-        allow="autoplay; encrypted-media" 
-        allowfullscreen 
-        style="border-radius: 8px;">
-      </iframe>
+      <div style="display: flex; flex-wrap: wrap; gap: 18px">
+        <div>
+          <div
+            style="position: relative"
+            onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Front Cam')"
+          >
+            <div
+              style="
+                position: absolute;
+                top: 8px;
+                left: 8px;
+                background: #22283b;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 14px;
+                font-family: 'Poppins', sans-serif;
+              "
+            >
+              Front Cam
+            </div>
+            <iframe
+              width="400"
+              height="250"
+              src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
+              title="Front Cam"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              style="border-radius: 8px"
+            >
+            </iframe>
+          </div>
         </div>
-  </div>
 
-  <div>
-    <div style="position: relative;"  onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Engine Room')">
-      <div style="
-        position: absolute;
-        top: 8px;
-        left: 8px;
-        background: #22283B;
-        color: white;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 14px;
-        font-family: 'Poppins', sans-serif;
-      ">
-        Engine Room
+        <div>
+          <div
+            style="position: relative"
+            onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Rear Cam')"
+          >
+            <div
+              style="
+                position: absolute;
+                top: 8px;
+                left: 8px;
+                background: #22283b;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 14px;
+                font-family: 'Poppins', sans-serif;
+              "
+            >
+              Rear Cam
+            </div>
+            <iframe
+              width="400"
+              height="250"
+              src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
+              title="Front Cam"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              style="border-radius: 8px"
+            >
+            </iframe>
+          </div>
+        </div>
+
+        <div>
+          <div
+            style="position: relative"
+            onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Bridge Cam')"
+          >
+            <div
+              style="
+                position: absolute;
+                top: 8px;
+                left: 8px;
+                background: #22283b;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 14px;
+                font-family: 'Poppins', sans-serif;
+              "
+            >
+              Bridge Cam
+            </div>
+            <iframe
+              width="400"
+              height="255"
+              src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
+              title="Front Cam"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              style="border-radius: 8px"
+            >
+            </iframe>
+          </div>
+        </div>
+
+        <div>
+          <div
+            style="position: relative"
+            onclick="zoomVideo('https://www.w3schools.com/html/mov_bbb.mp4', 'Engine Room')"
+          >
+            <div
+              style="
+                position: absolute;
+                top: 8px;
+                left: 8px;
+                background: #22283b;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 14px;
+                font-family: 'Poppins', sans-serif;
+              "
+            >
+              Engine Room
+            </div>
+            <iframe
+              width="400"
+              height="250"
+              src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
+              title="Front Cam"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              style="border-radius: 8px"
+            >
+            </iframe>
+          </div>
+        </div>
       </div>
-      <iframe 
-        width="390" 
-        height="250" 
-        src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1" 
-        title="Front Cam" 
-        frameborder="0" 
-        allow="autoplay; encrypted-media" 
-        allowfullscreen 
-        style="border-radius: 8px;">
-      </iframe>
-  </div>
-  </div>
-</div>
 
-  <!-- Zoomed Video Frame -->
-  <div id="zoomed-video" style="margin-top: 24px; margin-left: 20px; margin-right: 20px;">
-    <div style="position: relative;">
-      <div style="
-        position: absolute;
-        top: 8px;
-        left: 8px;
-        background: #22283B;
-        color: white;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 14px;
-        font-family: 'Poppins', sans-serif;
-      ">
-        Zoom Camera
+      <!-- Zoomed Video Frame -->
+      <div id="zoomed-video" style="margin-top: 24px;">
+        <div style="position: relative">
+          <div
+            style="
+              position: absolute;
+              top: 8px;
+              left: 8px;
+              background: #22283b;
+              color: white;
+              padding: 4px 8px;
+              border-radius: 4px;
+              font-size: 14px;
+              font-family: 'Poppins', sans-serif;
+            "
+          >
+            Zoom Camera
+          </div>
+          <video
+            id="zoomPlayer"
+            width="100%"
+            height="500"
+            controls
+            autoplay
+            muted
+            style="border-radius: 8px"
+          >
+            <source
+              src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
-      <video id="zoomPlayer" width="100%" height="500" controls autoplay muted style="border-radius: 8px;">
-        <source src="https://www.youtube.com/embed/6giEyn-GPEQ?autoplay=1&mute=1" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </div>
+    </main>
 
-
-
-
-    
-  </main>
-  
-  <!--   Core JS Files   -->
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script>
+      var win = navigator.platform.indexOf('Win') > -1;
+      if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+          damping: '0.5',
+        };
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
       }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-  </script>
+    </script>
 
-  <script>
-    function zoomVideo(videoUrl, label) {
-      const zoomPlayer = document.getElementById("zoomPlayer");
-      zoomPlayer.src = videoUrl;
+    <script>
+      function zoomVideo(videoUrl, label) {
+        const zoomPlayer = document.getElementById('zoomPlayer');
+        zoomPlayer.src = videoUrl;
 
-      const labelDiv = zoomPlayer.previousElementSibling;
-      if (labelDiv) {
-        labelDiv.textContent = label + " - Zoom Camera";
+        const labelDiv = zoomPlayer.previousElementSibling;
+        if (labelDiv) {
+          labelDiv.textContent = label + ' - Zoom Camera';
+        }
+
+        zoomPlayer.play();
       }
+    </script>
 
-      zoomPlayer.play();
-    }
-  </script>
-
-
-  <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/argon-dashboard.min.js?v=2.1.0"></script>
-</body>
-
+    <script src="../assets/js/script.js"></script>
+  </body>
 </html>
