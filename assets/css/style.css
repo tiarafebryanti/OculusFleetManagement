@@ -276,7 +276,6 @@ main-content {
   bottom: 10px;
   right: 10px;
   z-index: 999;
-  justify-items: center;
 }
 
 .video-grid iframe {
@@ -395,6 +394,7 @@ main-content {
   background: white;
   color: #4b4b4b;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .tugboat-list {
@@ -567,6 +567,31 @@ small {
   color: #888;
 }
 
+/* ===== Trip Summary Pages ===== */
+
+.video-grid-ts {
+  gap: 18px; /* Sedikit lebih jauh */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.video-label-ts {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #22283b;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.video-grid-ts iframe {
+  height: 250px !important; /* Ukuran video lebih besar */
+  width: 395px !important;
+  border-radius: 8px !important;
+}
+
 /* ===== Schedule Pages ===== */
 
 .timeline-container {
@@ -667,4 +692,557 @@ small {
   overflow-y: auto; /* Tambahkan ini untuk memungkinkan scroll */
   height: 100vh; /* Pastikan tinggi penuh */
   padding: 20px;
+}
+
+/* ====== Media Query ===== */
+
+@media screen and (max-width: 1280px) {
+  .sidebar {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 97vh;
+    width: 140px;
+    background: var(--sidebar-color);
+    border-radius: 20px;
+    margin-top: 13px;
+    margin-left: 8px;
+    z-index: 100;
+    transition: var(--tran-05);
+  }
+
+  .sidebar.close {
+    width: 40px;
+    border-radius: 8px;
+  }
+
+  .sidebar-search-tugboat.close {
+    width: 0px;
+  }
+
+  .sidebar.close li {
+    padding: 0 0px;
+  }
+
+  .sidebar .text {
+    font-size: 12px;
+    color: var(--text-color);
+    transition: var(--tran-03);
+    white-space: nowrap;
+    opacity: 1;
+  }
+
+  .sidebar.close .image,
+  .sidebar.close .text {
+    opacity: 0;
+  }
+
+  .sidebar .image {
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+  }
+
+  .sidebar .image-text img {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  .sidebar header .toggle {
+    position: absolute;
+    top: 50%;
+    right: -15px;
+    transform: translateY(-50%);
+    height: 25px;
+    width: 25px;
+    background: #999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--sidebar-color);
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  .hide-sidebar {
+    position: absolute;
+    top: 50%;
+    left: -14px;
+    transform: translateY(-50%);
+    background: #999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sidebar-color);
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .sidebar li {
+    height: 35px;
+    margin-top: 20px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+  }
+
+  .sidebar li .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    font-size: 15spx;
+  }
+
+  .sidebar li .icon,
+  .sidebar li .text {
+    color: var(--text-color);
+    transition: var(--tran-02);
+  }
+
+  .video-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 999;
+  }
+
+  .video-grid iframe {
+    height: 110px !important; /* Ukuran video lebih besar */
+    width: 180px !important;
+    border-radius: 2px !important;
+  }
+
+  .video-grid {
+    gap: 8px; /* Sedikit lebih jauh */
+    display: flex;
+    margin-bottom: -10px;
+    justify-content: end;
+  }
+
+  .video-label {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background: #22283b;
+    color: white;
+    border-radius: 2px;
+    font-size: 10px;
+  }
+
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+  }
+
+  .modal video {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: -16px;
+    right: -16px;
+    background: red;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+  }
+
+  .sidebar-search-tugboat {
+    position: fixed;
+    top: 50px;
+    right: 15px;
+    width: 160px;
+    background: white;
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    transition: var(--tran-03);
+  }
+
+  .sidebar-search-tugboat.collapsed {
+    width: 0;
+    padding: 0;
+    transition: var(--tran-03);
+  }
+
+  .sidebar-search-tugboat.collapsed #record-info {
+    display: none;
+  }
+
+  .search-bar-tugboat {
+    margin-bottom: 8px;
+  }
+
+  .search-bar-tugboat input {
+    width: 100%;
+    padding: 0px 5px;
+    border-radius: 20px;
+    border: 2px solid #ccc;
+    font-size: 11px;
+    color: #000;
+    font-weight: 100;
+  }
+
+  .search-bar-tugboat input:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #ccc; /* Tetap warna abu-abu saat fokus */
+  }
+
+  .form-select-tugboat {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 180px;
+    font-size: 12px;
+    background: white;
+    color: #4b4b4b;
+    margin-bottom: 6px;
+    margin-top: 6px;
+  }
+
+  .tugboat-list {
+    max-height: 350px; /* Sesuaikan tinggi maksimum sesuai kebutuhan */
+    overflow-y: auto;
+  }
+
+  .fleet-card {
+    display: flex;
+    background: #e4e4e4;
+    padding: 0px 0px;
+    margin-bottom: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    align-items: center;
+  }
+
+  .fleet-icon img {
+    width: 30px;
+    height: auto;
+    margin-right: 5px;
+  }
+
+  .fleet-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .fleet-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 00;
+    color: #3a3a3a;
+    margin-bottom: 5px;
+  }
+
+  .fleet-title {
+    font-size: 10px;
+    color: #000000;
+  }
+
+  .fleet-online {
+    color: green;
+    font-size: 8px;
+  }
+
+  .fleet-info-line {
+    display: flex;
+    justify-content: space-between;
+    color: #4f4f4f;
+    font-size: 10px;
+  }
+
+  .highlight-tugboat {
+    background-color: #cfe8ff !important;
+  }
+
+  small {
+    font-size: 8px; /* Atur sesuai kebutuhan */
+  }
+
+  strong {
+    font-size: 10px; /* Atur sesuai kebutuhan */
+  }
+
+  .record-tugboat {
+    text-align: start;
+    align-items: center;
+    display: flex;
+    gap: 2px;
+  }
+
+  .highlight {
+    background-color: #cfe8ff !important;
+  }
+
+  .leaflet-control-layers {
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    border-radius: 8px;
+    margin-right: 325px !important;
+    transform: scale(0.5); /* Mengecilkan panel */
+    margin-top: -40px !important;
+  }
+
+  .leaflet-control-zoom {
+    display: flex !important;
+    margin-top: 4px !important;
+    margin-right: 355px !important;
+    transform: scale(0.7); /* Mengecilkan panel */
+  }
+
+  .header {
+    position: fixed;
+    right: 13px;
+    height: 30px;
+    padding: 0 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    z-index: 99;
+  }
+
+  .search-container input {
+    padding: 5px 0px 5px 10px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    font-size: 10px;
+    background-color: #22283b;
+    color: white;
+    width: 220px;
+  }
+  .search-container i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .profile-badge {
+    background-color: #ffffff; /* putih */
+    border-radius: 999px;
+    border: 1px solid #1a1a1a;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-up {
+    font-weight: 600;
+    font-size: 10px;
+    color: #333;
+  }
+
+  .profile-down {
+    font-size: 8px;
+    color: #888;
+  }
+
+  .profile-icon {
+    margin-right: 5px;
+  }
+
+  .badge-content {
+    display: flex;
+    align-items: center;
+    padding: 0px 8px;
+  }
+
+  .profile-icon-svg {
+    height: 20px;
+    width: 20px;
+    margin-bottom: -4px;
+  }
+
+  .header-date {
+    display: flex;
+    gap: 33px;
+    justify-content: end;
+    font-weight: 600;
+    margin-bottom: 50px;
+    font-size: 12px;
+  }
+
+  .header-date div {
+    text-align: center;
+    width: 80px;
+  }
+
+  .tugboat-row-schedule {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 8px;
+    margin-bottom: 15px;
+    background-color: #fff;
+  }
+
+  .tugboat-info-schedule {
+    display: flex;
+    align-items: center;
+    min-width: 180px;
+  }
+
+  .tugboat-logo-schedule {
+    width: 30px;
+    height: auto;
+    object-fit: contain;
+    margin-right: 10px;
+  }
+
+  .tugboat-name-schedule {
+    min-width: 130px;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  .status-bar-schedule {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .status-schedule {
+    padding: 3px 5px;
+    border-radius: 2px;
+    font-size: 10px;
+    white-space: nowrap;
+    background-color: #d1d1d1;
+  }
+
+  .schedule-container {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-top: 30px;
+  }
+
+  .video-grid-ts {
+    gap: 10px; /* Sedikit lebih jauh */
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4px;
+  }
+
+  .video-label-ts {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: #22283b;
+    color: white;
+    padding: 4px 4px;
+    border-radius: 2px;
+    font-size: 12px;
+  }
+
+  .video-grid-ts iframe {
+    height: 170px !important; /* Ukuran video lebih besar */
+    width: 260px !important;
+    border-radius: 4px !important;
+  }
+
+  .timeline-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .label-column {
+    display: flex;
+    flex-direction: column;
+    gap: 95px; /* Sesuaikan agar sejajar dengan .time-slot */
+    margin-top: 100px;
+    width: 10%;
+  }
+
+  .tugboat-label {
+    background-color: #e5e7fb;
+    color: #22283b;
+    padding: 8px 5px;
+    border-radius: 4px;
+    display: flex;
+    font-size: 12px;
+    border: 2px solid #dfe0ef;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 180px;
+  }
+
+  .tugboat-label img {
+    width: 35px;
+    height: auto;
+    margin-right: 8px;
+  }
+
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 160px); /* 5 lokasi perjalanan */
+    width: 80%;
+    justify-content: space-between;
+  }
+
+  .timeline-column {
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .column-header {
+    font-weight: 500;
+    font-size: 12px;
+    margin-top: 0px;
+    width: 100%;
+    text-align: start;
+    border-bottom: 2px solid #222;
+  }
+
+  .time-slot {
+    margin: 50px 0;
+    font-size: 12px;
+    color: #222;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    height: 40px; /* Tambahkan tinggi tetap */
+    line-height: 40px; /* Vertikal tengah */
+    box-sizing: border-box; /* spacing antar waktu untuk sejajarkan dengan label */
+  }
 }
