@@ -44,21 +44,100 @@
           </li>
 
           <li class="nav-link">
+            <a href="./pages/schedule.html">
+              <i class="fas fa-calendar-days icon"></i>
+              <span class="text nav-text">Schedule</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
             <a href="./pages/tripsummary.html">
               <i class="fas fa-window-maximize icon"></i>
               <span class="text nav-text">Trip Summary</span>
             </a>
           </li>
+
+          <li class="nav-link">
+            <a href="">
+              <i class="fas fa-charging-station icon"></i>
+              <span class="text nav-text">Refuelings</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="">
+              <i class="fas fa-wrench icon"></i>
+              <span class="text nav-text">Maintenances</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="">
+              <i class="fas fa-ship icon"></i>
+              <span class="text nav-text">Vehicles</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="">
+              <i class="fas fa-microchip icon"></i>
+              <span class="text nav-text">Devices</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="">
+              <i class="fas fa-bell icon"></i>
+              <span class="text nav-text">Alarms</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="">
+              <i class="fas fa-users icon"></i>
+              <span class="text nav-text">Users</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="">
+              <i class="fas fa-server icon"></i>
+              <span class="text nav-text">Servers</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="">
+              <i class="fas fa-map-pin icon"></i>
+              <span class="text nav-text">Locations</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="">
+              <i class="fas fa-magnifying-glass-chart icon"></i>
+              <span class="text nav-text">Monitor</span>
+            </a>
+          </li>
+
           <li class="nav-link">
             <a href="./pages/configuration.html">
               <i class="fas fa-sliders-h icon"></i>
               <span class="text nav-text">Configuration</span>
             </a>
           </li>
+
           <li class="nav-link">
-            <a href="./pages/schedule.html">
-              <i class="fas fa-calendar-days icon"></i>
-              <span class="text nav-text">Schedule</span>
+            <a href="">
+              <i class="fas fa-globe icon"></i>
+              <span class="text nav-text">Time Zones</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="">
+              <i class="fas fa-user icon"></i>
+              <span class="text nav-text">Profile</span>
             </a>
           </li>
           <li class="nav-link">
@@ -71,63 +150,212 @@
       </div>
     </nav>
     <header class="header">
-      <div class="search-container">
-        <input type="text" placeholder="Search..." />
-        <i class="bx bx-search"></i>
+      <div>
+        <select id="tugboat-select" class="form-select-tugboat custom-select">
+          <option value="">Pilih Kendaraan</option>
+        </select>
       </div>
-      <div class="profile-badge">
-        <div class="badge-content">
-          <div class="profile-icon">
-            <svg
-              class="profile-icon-svg"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="#666"
-            >
-              <path d="M0 0h24v24H0z" fill="none" />
-              <path
-                d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2c-3.3 0-9.8 1.7-9.8 5v2h19.6v-2c0-3.3-6.5-5-9.8-5z"
-              />
-            </svg>
-          </div>
-          <div>
-            <div class="profile-up">Jane Doe</div>
-            <div class="profile-down">Admin</div>
-          </div>
-        </div>
+      <div>
+        <select id="timeline-select" class="form-select-timeline custom-select">
+          <option value="">2024-11-22 08:47:24 - 2024-11-22 09:04:27</option>
+        </select>
       </div>
+      <i class="bx bx-chevron-left header-btn"></i>
+      <i class="bx bx-chevron-right header-btn"></i>
+      <i class="bx bx-bar-chart header-btn"></i>
+      <i class="fa-regular fa-map map-btn"></i>
+      <i class="bx bx-map header-btn"></i>
+      <i class="bx bx-bell header-btn"></i>
+      <i class="bx bx-git-merge header-btn"></i>
     </header>
-    
 
     <main class="main-content">
       <div id="map"></div>
-      <div class="sidebar-search-tugboat">
+      <div class="sidebar-timeline-tugboat">
         <i class="bx bx-chevron-right hide-sidebar"></i>
-        <div class="search-bar-tugboat">
-          <div class="mb-3">
-            <input
-              type="text"
-              class="form-control border-radius-2xl border-2"
-              placeholder="by Nomor Kendaraan / ID"
-            />
+        <div class="sidebar-card">
+          <div class="distance-title">Distance</div>
+          <div class="distance-value">5,37 km</div>
+        </div>
+        <div class="sidebar-card">
+          <div class="distance-title">Time</div>
+          <div class="distance-value">00:17:13</div>
+        </div>
+        <div class="timeline-table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Coordinate</th>
+                <th>Speed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+              <tr>
+                <td>2024-11-22 09:04:27</td>
+                <td>-6.45813,106.83230</td>
+                <td>15,00 km/h</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="sidebar-dashboard">
+        <div class="sidebar-dashboard-content">
+          <i class="bx bx-chevron-right hide-sidebar-dashboard"></i>
+          <div class="gap-row">
+            <i class="fa-solid fa-server icon-circle"></i>
+            <div>
+              <div class="title-icon-circle">Server</div>
+              <div class="value-icon-circle">
+                Server created on port 8091 for the teltonika protocol
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="d-flex flex-column tugboat-list">
-          <!-- Fleet cards will be inserted dynamically -->
-        </div>
-        <div id="record-info" class="record-tugboat">
-          <div><small>7 records found</small></div>
-          <div><strong>of 7 Tugboats</strong></div>
+          <div class="gap-row">
+            <i class="fa-solid fa-ship icon-circle"></i>
+            <div>
+              <div class="title-icon-circle">Vehicle</div>
+              <div class="value-icon-circle">
+                Server created on port 8091 for the teltonika protocol
+              </div>
+            </div>
+          </div>
+          <div class="gap-row">
+            <i class="fa-solid fa-computer icon-circle"></i>
+            <div>
+              <div class="title-icon-circle">Devices</div>
+              <div class="value-icon-circle">
+                Server created on port 8091 for the teltonika protocol
+              </div>
+            </div>
+          </div>
+          <div class="gap-row">
+            <i class="fa-solid fa-route icon-circle"></i>
+            <div>
+              <div class="title-icon-circle">Waiting for Trips</div>
+              <div class="value-icon-circle">
+                The server is waiting to receive the first connections from a device
+              </div>
+            </div>
+          </div>
+
+          <div class="stats-container">
+            <!-- Total Distance -->
+            <div class="stats-section">
+              <div class="stats-header">Total Distance</div>
+              <div class="stats-value">5,37 km</div>
+            </div>
+
+            <!-- Speed Statistics -->
+            <div class="stats-section">
+              <div class="stats-header">Speed Statistics</div>
+              <div class="stats-row">
+                <span>Average Speed</span>
+                <span>0.00 km/h</span>
+              </div>
+              <div class="stats-row">
+                <span>Maximum Speed</span>
+                <span>0.00 km/h</span>
+              </div>
+              <div class="stats-row">
+                <span>Minimum Speed</span>
+                <span>0.00 km/h</span>
+              </div>
+            </div>
+
+            <!-- Time Statistics -->
+            <div class="stats-section">
+              <div class="stats-header">Time Statistics</div>
+              <div class="stats-row">
+                <span>Total Time</span>
+                <span>00:00:00</span>
+              </div>
+              <div class="stats-row">
+                <span>Stopped Time</span>
+                <span>00:00:00</span>
+              </div>
+              <div class="stats-row">
+                <span>Movement Time</span>
+                <span>00:00:00</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="video-container">
-        <div>
-          <select id="tugboat-select" class="form-select-tugboat">
-            <option value="">Pilih Tugboat</option>
-          </select>
-        </div>
-
         <!-- Video Grid -->
         <div class="video-grid">
           <div
@@ -203,7 +431,13 @@
 
     <script>
       document.querySelector('.hide-sidebar').addEventListener('click', function () {
-        document.querySelector('.sidebar-search-tugboat').classList.toggle('collapsed');
+        document.querySelector('.sidebar-timeline-tugboat').classList.toggle('collapsed');
+      });
+    </script>
+
+    <script>
+      document.querySelector('.hide-sidebar-dashboard').addEventListener('click', function () {
+        document.querySelector('.sidebar-dashboard').classList.toggle('collapsed');
       });
     </script>
 
@@ -252,7 +486,7 @@
       }).addTo(map);
 
       // Tambahkan kontrol zoom ke kanan atas
-      L.control.zoom({ position: 'topright' }).addTo(map);
+      L.control.zoom({ position: 'topleft' }).addTo(map);
 
       // Weather overlay layers
       const clouds = L.tileLayer(
@@ -311,191 +545,9 @@
       L.control
         .layers(null, overlays, {
           collapsed: true,
-          position: 'topright', // atau "topleft", "topright", "bottomright"
+          position: 'topleft', // atau "topleft", "topright", "bottomright"
         })
         .addTo(map);
-
-      const tugboats = [
-        {
-          id: 'TUGBOAT GTEI 1',
-          image: '../assets/img/examples/active-tugboat.svg',
-          status: 'Moving',
-          speed: '3.5 Knots',
-          heading: '190',
-          coords: [-2.979758, 114.770769],
-        },
-        {
-          id: 'TUGBOAT GTEI 2',
-          image: '../assets/img/examples/active-tugboat.svg',
-          status: 'Moving',
-          speed: '3.5 Knots',
-          heading: '190',
-          coords: [-3.28953, 114.56758],
-        },
-        {
-          id: 'TUGBOAT GTEI 3',
-          image: '../assets/img/examples/active-tugboat.svg',
-          status: 'Moving',
-          speed: '3.5 Knots',
-          heading: '190',
-          coords: [-3.40984, 114.49331],
-        },
-        {
-          id: 'TUGBOAT GTEI 4',
-          image: '../assets/img/examples/active-tugboat.svg',
-          status: 'Moving',
-          speed: '3.5 Knots',
-          heading: '190',
-          coords: [-3.6818, 114.4418],
-        },
-        {
-          id: 'TUGBOAT GTEI 5',
-          image: '../assets/img/examples/active-tugboat.svg',
-          status: 'Moving',
-          speed: '3.5 Knots',
-          heading: '190',
-          coords: [-10.17422, 123.622091],
-        },
-        {
-          id: 'TUGBOAT GTEI 6',
-          image: '../assets/img/examples/active-tugboat.svg',
-          status: 'Moving',
-          speed: '3.5 Knots',
-          heading: '190',
-          coords: [-6.2711281704409245, 107.65769652872076],
-        },
-        {
-          id: 'TUGBOAT GTEI 7',
-          image: '../assets/img/examples/active-tugboat.svg',
-          status: 'Moving',
-          speed: '3.5 Knots',
-          heading: '190',
-          coords: [-7.789476, 110.396235],
-        },
-      ];
-
-      const cardContainer = document.querySelector('.d-flex.flex-column');
-
-      // Buat fleet card dan simpan semua marker
-      const markers = [];
-
-      const customIcon = L.icon({
-        iconUrl: '../assets/img/examples/active-tugboat.svg',
-        iconSize: [50, 35],
-        iconAnchor: [20, 20],
-        popupAnchor: [0, -20],
-      });
-
-      function renderFleetCards() {
-        tugboats.forEach((tugboat) => {
-          const card = document.createElement('div');
-          card.classList.add('fleet-item');
-          card.innerHTML = `
-      <div class="fleet-card ">
-    <div class="fleet-icon">
-      <img src="${tugboat.image}" alt="Tugboat Icon" />
-    </div>
-    <div class="fleet-details">
-      <div class="fleet-header">
-        <span class="fleet-title">${tugboat.id}</span>
-        <span class="fleet-online">Online</span>
-      </div>
-      <div class="fleet-info-line">Status <span>${tugboat.status}</span></div>
-      <div class="fleet-info-line">Speed <span>${tugboat.speed}</span></div>
-      <div class="fleet-info-line">Heading <span>${tugboat.heading}</span></div>
-    </div>
-  </div>
-    `;
-          cardContainer.appendChild(card);
-
-          const marker = L.marker(tugboat.coords, { icon: customIcon }).addTo(map).bindPopup(`
-      <div style="text-align:center">
-        <img src="${tugboat.image}" alt="tugboat" style="width:60px;"><br>
-        <strong>${tugboat.id}</strong><br>
-        <small>${tugboat.status}</small><br>
-        <small>${tugboat.speed}</small><br>
-        <small>${tugboat.heading}</small><br>
-      </div>
-    `);
-          markers.push({ id: tugboat.id, marker, card });
-        });
-      }
-
-      function populateSelectDropdown() {
-        const select = document.getElementById('tugboat-select');
-        tugboats.forEach((tugboat) => {
-          const option = document.createElement('option');
-          option.value = tugboat.id;
-          option.textContent = tugboat.id;
-          select.appendChild(option);
-        });
-      }
-
-      renderFleetCards();
-      populateSelectDropdown();
-
-      const inputElement = document.querySelector('input[placeholder="by Nomor Kendaraan / ID"]');
-
-      inputElement.addEventListener('input', function () {
-        const searchTerm = this.value.trim().toUpperCase();
-
-        // Hapus semua marker
-        markers.forEach((item) => {
-          map.removeLayer(item.marker);
-          const fleetCard = item.card.querySelector('.fleet-card');
-          fleetCard.classList.remove('highlight');
-        });
-
-        if (searchTerm === '') {
-          // Jika input kosong: tampilkan semua marker & zoom out agar semua kelihatan
-          const bounds = L.latLngBounds([]);
-          markers.forEach((item) => {
-            item.marker.addTo(map);
-            item.card.style.display = 'block'; // Tampilkan semua card
-            bounds.extend(item.marker.getLatLng());
-          });
-          map.fitBounds(bounds); // Zoom out agar semua marker terlihat
-          updateRecordInfo(tugboats.length, tugboats.length);
-          return;
-        }
-
-        let matchCount = 0;
-
-        markers.forEach((item) => {
-          if (item.id.toUpperCase().includes(searchTerm)) {
-            item.marker.addTo(map).openPopup();
-            item.card.style.display = 'block';
-            const fleetCard = item.card.querySelector('.fleet-card');
-            fleetCard.classList.add('highlight');
-            matchCount++;
-          } else {
-            item.card.style.display = 'none';
-          }
-        });
-
-        updateRecordInfo(matchCount, tugboats.length);
-
-        if (!anyMatch) {
-          map.setView([-3.1, 114.65], 9); // Default view kalau tidak ditemukan
-        }
-
-        const found = tugboats.find((tugboat) => tugboat.id.includes(searchTerm));
-        if (found) {
-          const result = markers.find((m) => m.id === found.id);
-          result.marker.addTo(map).openPopup();
-
-          const fleetCard = result.card.querySelector('.fleet-card');
-          fleetCard.classList.add('highlight');
-
-          fleetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          map.setView(found.coords, 15);
-        }
-      });
-
-      function updateRecordInfo(visibleCount, totalCount) {
-        const recordInfo = document.getElementById('record-info');
-        recordInfo.innerHTML = `<small>${visibleCount} records found</small><br /><strong>of ${totalCount} Tugboats</strong>`;
-      }
     </script>
   </body>
 </html>
