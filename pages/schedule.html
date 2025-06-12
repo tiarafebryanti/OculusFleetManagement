@@ -6,19 +6,26 @@
     <title>OCULUS FLEET | GTEI Tugboat Fleet Management</title>
     <!--     Fonts and icons     -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/style.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
     <!-- Boxicons CDN -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-
   </head>
 
   <body>
-    <nav class="sidebar close">
+    <nav class="sidebar">
       <header>
         <div class="image-text">
           <span class="image">
@@ -29,8 +36,7 @@
       </header>
 
       <div class="menu-bar">
-        <div class="menu"></div>
-        <ul class="menu-links">
+        <ul>
           <li class="nav-link">
             <a href="../index.html">
               <i class="fa-solid fa-house icon"></i>
@@ -38,26 +44,339 @@
             </a>
           </li>
 
-          <li class="nav-link">
-            <a href="../pages/tripsummary.html">
-              <i class="fas fa-window-maximize icon"></i>
-              <span class="text nav-text">Trip Summary</span>
-            </a>
-          </li>
-          <li class="nav-link">
-            <a href="../pages/configuration.html">
-              <i class="fas fa-sliders-h icon"></i>
-              <span class="text nav-text">Configuration</span>
-            </a>
-          </li>
           <li class="nav-link active">
-            <a href="../pages/schedule.html">
+            <a href="./schedule.html">
               <i class="fas fa-calendar-days icon"></i>
               <span class="text nav-text">Schedule</span>
             </a>
           </li>
+
+          <li class="nav-link has-submenu">
+            <a href="javascript:void(0)">
+              <i class="fas fa-window-maximize icon"></i>
+              <span class="text nav-text">Trip Summary</span>
+              <i class="fas fa-chevron-down arrow-icon"></i>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="./tripsummary.html">
+                  <i class="fa-solid fa-list icon-submenu"></i>
+                  <span>List</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-search icon-submenu"></i>
+                  <span>Search</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-map icon-submenu"></i>
+                  <span>Map</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-temperature-half icon-submenu"></i>
+                  <span>Heat Map</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-link has-submenu">
+            <a href="javascript:void(0)">
+              <i class="fas fa-charging-station icon"></i>
+              <span class="text nav-text">Refuelings</span>
+              <i class="fas fa-chevron-down arrow-icon"></i>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-list icon-submenu"></i>
+                  <span>List</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-circle-plus icon-submenu"></i>
+                  <span>Create</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-map icon-submenu"></i>
+                  <span>Map</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-link has-submenu">
+            <a href="javascript:void(0)">
+              <i class="fas fa-wrench icon"></i>
+              <span class="text nav-text">Maintenances</span>
+              <i class="fas fa-chevron-down arrow-icon"></i>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-list icon-submenu"></i>
+                  <span>List</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-circle-plus icon-submenu"></i>
+                  <span>Create</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-box icon-submenu"></i>
+                  <span>Items</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-link has-submenu">
+            <a href="javascript:void(0)">
+              <i class="fas fa-ship icon"></i>
+              <span class="text nav-text">Vehicles</span>
+              <i class="fas fa-chevron-down arrow-icon"></i>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-list icon-submenu"></i>
+                  <span>List</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-circle-plus icon-submenu"></i>
+                  <span>Create</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-map icon-submenu"></i>
+                  <span>Map</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-link has-submenu">
+            <a href="javascript:void(0)">
+              <i class="fas fa-microchip icon"></i>
+              <span class="text nav-text">Devices</span>
+              <i class="fas fa-chevron-down arrow-icon"></i>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-list icon-submenu"></i>
+                  <span>List</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-circle-plus icon-submenu"></i>
+                  <span>Create</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-map icon-submenu"></i>
+                  <span>Map</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-link has-submenu">
+            <a href="javascript:void(0)">
+              <i class="fas fa-bell icon"></i>
+              <span class="text nav-text">Alarms</span>
+              <i class="fas fa-chevron-down arrow-icon"></i>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-list icon-submenu"></i>
+                  <span>List</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-circle-plus icon-submenu"></i>
+                  <span>Create</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-triangle-exclamation icon-submenu"></i>
+                  <span>Notifications</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-link has-submenu">
+            <a href="javascript:void(0)">
+              <i class="fas fa-users icon"></i>
+              <span class="text nav-text">Users</span>
+              <i class="fas fa-chevron-down arrow-icon"></i>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-list icon-submenu"></i>
+                  <span>List</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-circle-plus icon-submenu"></i>
+                  <span>Create</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-key icon-submenu"></i>
+                  <span>Sessions</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-lock icon-submenu"></i>
+                  <span>Blocked IPs</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-link has-submenu">
+            <a href="javascript:void(0)">
+              <i class="fas fa-server icon"></i>
+              <span class="text nav-text">Servers</span>
+              <i class="fas fa-chevron-down arrow-icon"></i>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-chart-line icon-submenu"></i>
+                  <span>Status</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-list icon-submenu"></i>
+                  <span>List</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-circle-plus icon-submenu"></i>
+                  <span>Create</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-link has-submenu">
+            <a href="javascript:void(0)">
+              <i class="fas fa-map-pin icon"></i>
+              <span class="text nav-text">Locations</span>
+              <i class="fas fa-chevron-down arrow-icon"></i>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-city icon-submenu"></i>
+                  <span>Cities</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-flag icon-submenu"></i>
+                  <span>States</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-building-wheat icon-submenu"></i>
+                  <span>Countries</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-link has-submenu">
+            <a href="javascript:void(0)">
+              <i class="fas fa-magnifying-glass-chart icon"></i>
+              <span class="text nav-text">Monitor</span>
+              <i class="fas fa-chevron-down arrow-icon"></i>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-server icon-submenu"></i>
+                  <span>System</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-bars-progress icon-submenu"></i>
+                  <span>Installation</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-database icon-submenu"></i>
+                  <span>Database</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-file-waveform icon-submenu"></i>
+                  <span>Logs</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="fa-solid fa-list-ol icon-submenu"></i>
+                  <span>Queue</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="nav-link">
-            <a href="../pages/sign-up.html">
+            <a href="./configuration.html">
+              <i class="fas fa-sliders-h icon"></i>
+              <span class="text nav-text">Configuration</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="">
+              <i class="fas fa-globe icon"></i>
+              <span class="text nav-text">Time Zones</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="">
+              <i class="fas fa-user icon"></i>
+              <span class="text nav-text">Profile</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a href="./sign-up.html">
               <i class="fas fa-right-from-bracket icon"></i>
               <span class="text nav-text">Logout</span>
             </a>
@@ -179,6 +498,19 @@
     <script src="../assets/js/core/bootstrap.min.js"></script>
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const submenuToggles = document.querySelectorAll('.nav-link.has-submenu > a');
+
+        submenuToggles.forEach((toggle) => {
+          toggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            const parentLi = this.parentElement;
+            parentLi.classList.toggle('open');
+          });
+        });
+      });
+    </script>
     <script>
       var win = navigator.platform.indexOf('Win') > -1;
       if (win && document.querySelector('#sidenav-scrollbar')) {
